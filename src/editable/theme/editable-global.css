@@ -1,22 +1,20 @@
 /*
   Editable global theme layer.
 
-  Safe for UI editors / AI tools:
-  - Full site background
-  - Global text color
-  - Editable-only typography
-  - Selection color
-  - Scrollbar feel
+  Safe for UI editors:
+  - Full site background + global text color
+  - Editable-only typography (display serif + body sans)
+  - Signature texture utilities (halftone dot field, gradient wash)
+  - Motion primitives (rise, marquee, accordion)
+  - Selection + scrollbar feel
   - Article body typography accents
 
   Do not add data fetching, scripts, or route logic here.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
-
-/* Per-task display + body typefaces (consumed via task-themes.ts). */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap');
+/* Display: high-contrast editorial serif. Body: warm geometric sans. */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
 
 body {
   background-color: var(--slot4-page-bg) !important;
@@ -25,57 +23,22 @@ body {
 }
 
 .editable-site-root {
-  /* Yelp-style clean sans, used for both display and body. */
-  --editable-font-display: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --editable-font-body: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  /* Premium easing curve used across every hover + transition. */
+  --editable-font-display: 'Instrument Serif', 'Fraunces', 'Times New Roman', Georgia, serif;
+  --editable-font-body: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   font-family: var(--editable-font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/*
-  Site-wide premium motion.
-
-  1. Unify the easing of every existing transition/hover to one refined curve.
-  2. Add a smooth "post open" entry animation that replays on each navigation
-     (driven by EditablePageMotion remounting the content per route).
-  Durations stay defined per-component via Tailwind utilities.
-*/
+/* Unify the easing of every transition to one refined curve. */
 .editable-site-root *,
 .editable-site-root *::before,
 .editable-site-root *::after {
   transition-timing-function: var(--ease-premium);
 }
 
-@keyframes editable-enter {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 22px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* The content region rises + fades on open; `backwards` clears the transform
-   afterwards so sticky sidebars keep working. */
-.editable-enter > * {
-  animation: editable-enter 0.6s var(--ease-premium) backwards;
-  will-change: transform, opacity;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .editable-enter > * {
-    animation: none;
-  }
-  .editable-site-root *,
-  .editable-site-root *::before,
-  .editable-site-root *::after {
-    transition-duration: 0.001ms !important;
-    animation-duration: 0.001ms !important;
-  }
-}
+/* ---------------------------------------------------------------- type --- */
 
 .editable-site-root h1,
 .editable-site-root h2,
@@ -83,7 +46,8 @@ body {
 .editable-site-root h4,
 .editable-display {
   font-family: var(--editable-font-display);
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 .editable-site-root p,
@@ -91,33 +55,263 @@ body {
 .editable-site-root input,
 .editable-site-root button,
 .editable-site-root textarea,
+.editable-site-root select,
 .editable-site-root label,
 .editable-site-root nav {
   font-family: var(--editable-font-body);
 }
 
+/* Small uppercase label used across sections. */
+.editable-label {
+  font-family: var(--editable-font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ textures --- */
+
+/* Signature halftone field: coral → pink wash with a fine dot screen. */
+.pace-halftone {
+  position: relative;
+  background-color: var(--slot4-accent);
+  background-image:
+    radial-gradient(120% 90% at 12% 8%, var(--slot4-pink) 0%, transparent 58%),
+    radial-gradient(110% 90% at 92% 92%, var(--slot4-pink) 0%, transparent 62%);
+  isolation: isolate;
+}
+
+.pace-halftone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1.5px, transparent 1.6px);
+  background-size: 12px 12px;
+}
+
+.pace-halftone > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Soft blush field with a barely-there dot screen, for light sections. */
+.pace-grain {
+  position: relative;
+  background-image: radial-gradient(rgba(24, 18, 17, 0.055) 1px, transparent 1.1px);
+  background-size: 16px 16px;
+}
+
+/* ------------------------------------------------------------- motion --- */
+
+@keyframes editable-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* `backwards` clears the transform once the entry finishes, so sticky columns
+   keep working. No `will-change` here — a persistent transform hint would turn
+   this element into the containing block for fixed-position children (the
+   lightbox, the reading progress rail). */
+.editable-enter > * {
+  animation: editable-enter 0.65s var(--ease-premium) backwards;
+}
+
+@keyframes pace-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pace-rise {
+  animation: pace-rise 0.7s var(--ease-premium) backwards;
+}
+
+@keyframes pace-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.pace-marquee {
+  animation: pace-marquee 34s linear infinite;
+  will-change: transform;
+}
+
+.pace-marquee-wrap:hover .pace-marquee {
+  animation-play-state: paused;
+}
+
+/* Animated underline for editorial links. */
+.pace-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 1px);
+  transition: background-size 0.45s var(--ease-premium);
+}
+
+.pace-underline:hover,
+.pace-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Media zoom shared by every card style. */
+.pace-zoom img {
+  transition: transform 0.9s var(--ease-premium), filter 0.6s var(--ease-premium);
+}
+
+.pace-zoom:hover img {
+  transform: scale(1.045);
+}
+
+/* ---------------------------------------------------------- accordion --- */
+
+.pace-faq summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.pace-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.pace-faq .pace-faq-icon {
+  transition: transform 0.45s var(--ease-premium);
+}
+
+.pace-faq[open] .pace-faq-icon {
+  transform: rotate(45deg);
+}
+
+.pace-faq[open] .pace-faq-body {
+  animation: pace-rise 0.45s var(--ease-premium) backwards;
+}
+
+/* ------------------------------------------------------------ chrome --- */
+
 ::selection {
-  background: color-mix(in oklab, var(--slot4-accent-fill) 28%, transparent);
-  color: var(--slot4-page-text);
+  background: var(--slot4-accent);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: color-mix(in oklab, var(--slot4-page-bg) 88%, black);
+  background: color-mix(in oklab, var(--slot4-page-bg) 92%, black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--slot4-accent) 45%, transparent);
+  background: color-mix(in oklab, var(--slot4-accent) 55%, transparent);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--slot4-accent) 68%, transparent);
+  background: var(--slot4-accent);
 }
 
-.article-content h2 {
-  color: var(--slot4-accent);
+.pace-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pace-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------------ article body --- */
+
+.article-content h2,
+.article-content h3 {
+  font-family: var(--editable-font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--slot4-page-text);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.85rem;
+  line-height: 1.2;
+}
+
+.article-content h3 {
+  font-size: 1.45rem;
+}
+
+.article-content p {
+  margin-bottom: 1.15rem;
 }
 
 .article-content a {
   color: var(--slot4-accent-fill);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1.15rem 0 1.15rem 1.15rem;
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--slot4-accent);
+  font-family: var(--editable-font-display);
+  font-size: 1.4rem;
+  line-height: 1.45;
+}
+
+.article-content img {
+  border-radius: 1.25rem;
+  margin: 1.75rem 0;
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------- reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .editable-enter > *,
+  .pace-rise,
+  .pace-marquee,
+  .pace-faq[open] .pace-faq-body {
+    animation: none !important;
+  }
+  .pace-zoom:hover img {
+    transform: none;
+  }
+  .editable-site-root *,
+  .editable-site-root *::before,
+  .editable-site-root *::after {
+    transition-duration: 0.001ms !important;
+  }
 }
