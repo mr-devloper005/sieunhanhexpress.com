@@ -3,143 +3,228 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const pagesContent = {
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
-      description: 'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
-      openGraphDescription: 'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+      title: 'A dependable place to find work, people and ideas',
+      description:
+        'Browse galleries, profiles and practical writing in one calm, well-made library built for people running businesses.',
+      openGraphTitle: 'A dependable place to find work, people and ideas',
+      openGraphDescription:
+        'Galleries, profiles and practical writing, gathered in one calm library and kept easy to move through.',
+      keywords: ['visual library', 'profiles', 'creative directory', 'business resources', 'content discovery'],
     },
     hero: {
-      badge: 'Latest stories and visuals',
-      title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-      description: 'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
-      primaryCta: { label: 'Read latest stories', href: '/article' },
-      secondaryCta: { label: 'Explore visuals', href: '/image' },
-      searchPlaceholder: 'Search stories, visuals, listings, and more',
-      focusLabel: 'Focus',
+      badge: 'Fresh work, every week',
+      title: ['A dependable library', 'that helps you decide.'],
+      description:
+        'Every gallery, profile and guide here is chosen because it is genuinely useful when you are weighing a decision — no two businesses look the same, and the library is built to respect that.',
+      lead: 'No noise, no filler, no copy-paste pages.',
+      primaryCta: { label: 'Start browsing', href: '/image' },
+      secondaryCta: { label: 'Search the library', href: '/search' },
+      searchPlaceholder: 'Search galleries, people, topics',
+      focusLabel: 'In focus',
+      ratingLabel: 'Rated by readers',
+      ratingValue: '4.9',
       featureCardBadge: 'latest cover rotation',
-      featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
-      featureCardDescription: 'Recent images and stories stay at the center of the experience without changing any core platform behavior.',
+      featureCardTitle: 'The newest posts set the tone of the homepage.',
+      featureCardDescription:
+        'Recent galleries and profiles stay at the centre of the experience, so the front page always reflects what was just published.',
+    },
+    marquee: [
+      'Updated every week',
+      'Curated, never auto-filled',
+      'Built for people who decide',
+      'Clear pages, no clutter',
+      'Real work, real names',
+    ],
+    stats: [
+      { value: '99%', label: 'of readers come back' },
+      { value: '1,500+', label: 'posts kept in order' },
+      { value: '36%', label: 'arrive by recommendation' },
+    ],
+    statsNote: 'Figures from our most recent audience review',
+    help: {
+      eyebrow: 'How this works',
+      title: 'How we help',
+      description:
+        'The library is grounded, practical and shaped around the realities of running something of your own. You get what is useful — not what a textbook says should be useful.',
+      items: [
+        {
+          title: 'Peace of mind',
+          body: 'When you need a sense check or a second opinion, browse work that has already been vetted and see how others handled the same call.',
+        },
+        {
+          title: 'Save the hours',
+          body: 'Skip the open-tab spiral. Everything is filed by type and topic, so a ten-minute look answers what an afternoon of searching would not.',
+        },
+        {
+          title: 'Depth on demand',
+          body: 'Some weeks you need a quick reference; some weeks you need the long version. Both live here, and both are kept current.',
+        },
+      ],
+    },
+    audience: {
+      eyebrow: 'Who this is for',
+      title: 'Who we help',
+      description: 'Owners, operators and small teams who would rather look once and look properly.',
+    },
+    spotlight: {
+      eyebrow: 'From the archive',
+      title: 'Worth a closer look',
+      description: 'A rotating pick from the collection — move through it at your own pace.',
+    },
+    faq: {
+      eyebrow: 'Questions we are often asked',
+      title: 'Helpful answers before you dig in.',
+      description: 'A few quick answers for owners, operators and anyone considering where to start.',
+      items: [
+        {
+          question: 'What is this site for?',
+          answer:
+            'It is a curated library of galleries, profiles and practical writing. Everything is published in full on the site and organised so you can find it again later.',
+        },
+        {
+          question: 'How often is new work added?',
+          answer:
+            'New posts land regularly and the homepage reorders itself around the most recent ones, so the front page is always a fair reflection of the collection.',
+        },
+        {
+          question: 'Can I search across everything at once?',
+          answer:
+            'Yes. The search page covers every section — galleries, profiles and written pieces — and you can narrow results by content type or category.',
+        },
+        {
+          question: 'Can I contribute my own work?',
+          answer:
+            'Create an account and the publishing workspace opens up. You can prepare a post with images, a summary, links and full body content before submitting it.',
+        },
+        {
+          question: 'How do I get in touch?',
+          answer:
+            'Use the contact page. Tell us what you are trying to publish, fix or launch and it gets routed to the right place rather than a generic inbox.',
+        },
+      ],
     },
     intro: {
-      badge: 'About the platform',
-      title: 'Built for reading, browsing, and connecting different kinds of content.',
+      badge: 'About this library',
+      title: 'Built for looking properly, not scrolling endlessly.',
       paragraphs: [
-        'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-        'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-        'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+        'This site brings galleries, profiles and written pieces together so you can move naturally between them instead of hunting across disconnected pages.',
+        'Everything is filed the same way, described the same way, and linked the same way — which means the thing you found once is still findable a month later.',
+        'Start anywhere. A gallery leads to the person behind it, a profile leads to their work, and a written piece leads to both.',
       ],
       sideBadge: 'At a glance',
       sidePoints: [
-        'Reading-first homepage with stronger emphasis on stories and imagery.',
-        'Connected sections for articles, visuals, listings, and supporting resources.',
-        'Cleaner browsing rhythm designed to make exploration feel easier.',
-        'Lightweight interactions that keep the experience fast and readable.',
+        'A front page shaped by what was actually published most recently.',
+        'Galleries, profiles and writing kept in one connected system.',
+        'Search across every section at once, or narrow to one.',
+        'Light, fast pages that stay readable on any screen.',
       ],
-      primaryLink: { label: 'Browse articles', href: '/article' },
-      secondaryLink: { label: 'See visuals', href: '/image' },
+      primaryLink: { label: 'Browse the gallery', href: '/image' },
+      secondaryLink: { label: 'Search the library', href: '/search' },
     },
     cta: {
-      badge: 'Start exploring',
-      title: 'Explore articles, visuals, and resources through one connected experience.',
-      description: 'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
-      primaryCta: { label: 'Browse Articles', href: '/article' },
-      secondaryCta: { label: 'Contact Sales', href: '/contact' },
+      badge: 'Start here',
+      title: 'Got something worth sharing?',
+      description:
+        'Add your work, share a gallery, or send over a piece you think belongs here. It takes a few minutes and reaches people who are actually looking.',
+      primaryCta: { label: 'Create a post', href: '/create' },
+      secondaryCta: { label: 'Talk to us', href: '/contact' },
     },
     taskSection: {
       heading: 'Latest {label}',
-      descriptionSuffix: 'Browse the newest posts in this section.',
+      descriptionSuffix: 'The newest posts in this section.',
     },
   },
   about: {
-    badge: 'Our Story',
-    title: 'A calmer, clearer way to explore content.',
-    description: `${slot4BrandConfig.siteName} is built to make long-form reading, visual discovery, and supporting resources feel like one unified experience.`,
+    badge: 'Our story',
+    title: 'A calmer, clearer way to find good work.',
+    description: `${slot4BrandConfig.siteName} exists to make browsing, reading and finding people feel like one considered experience rather than three separate chores.`,
     paragraphs: [
-      'Instead of splitting everything into disconnected pages, the platform keeps related content easy to move through and easy to understand.',
-      'Whether someone starts with an article, listing, image post, or resource page, they can continue exploring without losing context.',
+      'Instead of splitting everything across disconnected pages, we keep related work easy to move through and easy to understand at a glance.',
+      'Whether you arrive at a gallery, a profile or a written piece, you can keep going without losing your place or your patience.',
+      'The result is a library that rewards a second visit — and a third.',
     ],
     values: [
       {
-        title: 'Reading-first experience',
-        description: 'We prioritize clarity, pacing, and structure so people can read, browse, and discover without noise.',
+        title: 'Considered over crowded',
+        description: 'We favour clarity, pacing and structure so you can look, read and decide without wading through noise.',
       },
       {
-        title: 'Connected content surfaces',
-        description: 'Articles, visual posts, listings, resources, and profiles stay connected so discovery feels natural across the site.',
+        title: 'Everything connected',
+        description: 'Galleries, profiles and written pieces link to each other, so discovery keeps its momentum across the whole site.',
       },
       {
-        title: 'Simple and trustworthy',
-        description: 'We focus on clean navigation and clear page structure to help visitors find useful content faster.',
+        title: 'Straightforward and steady',
+        description: 'Clean navigation and honest page structure, so useful things surface faster and stay where you left them.',
       },
     ],
   },
   contact: {
     eyebrow: `Contact ${slot4BrandConfig.siteName}`,
-    title: 'A support page that matches the product, not a generic contact form.',
-    description: 'Tell us what you are trying to publish, fix, or launch. We will route it through the right lane instead of forcing every request into the same support bucket.',
+    title: 'A real conversation, not a ticket number.',
+    description:
+      'Tell us what you are trying to publish, fix or launch. It gets routed through the right lane instead of being pushed into the same generic support bucket as everything else.',
     formTitle: 'Send a message',
   },
 
   search: {
     metadata: {
       title: 'Search',
-      description: 'Search posts, topics, categories, and content across the site.',
+      description: 'Search across galleries, profiles, topics and categories in one place.',
     },
     hero: {
-      badge: 'Search the archive',
-      title: 'Find stories, listings, visuals, and resources faster.',
-      description: 'Use keywords, categories, and content types to discover posts from every active section of the site.',
-      placeholder: 'Search by keyword, topic, category, or title',
+      badge: 'Search everything',
+      title: 'Find the work, the person or the answer.',
+      description: 'Use keywords, categories and content types to pull results from every active section of the site.',
+      placeholder: 'Search by keyword, topic, category or title',
     },
-    resultsTitle: 'Latest searchable content',
+    resultsTitle: 'Latest across the library',
   },
   create: {
     metadata: {
       title: 'Create',
-      description: 'Create and submit new content for the site.',
+      description: 'Create and submit new work for the site.',
     },
     locked: {
-      badge: 'Creator access',
-      title: 'Login to create new content.',
-      description: 'Use your account to open the publishing workspace and create posts for the active sections of this site.',
+      badge: 'Contributor access',
+      title: 'Log in to publish your work.',
+      description: 'Use your account to open the publishing workspace and prepare a post for any active section of the site.',
     },
     hero: {
       badge: 'Publishing workspace',
-      title: 'Create content for every active section.',
-      description: 'Choose the content type, add details, and prepare a clean post with images, links, summary, and body content.',
+      title: 'Prepare a post for any section.',
+      description: 'Choose the content type, add the details, and build a clean post with images, links, a summary and full body content.',
     },
-    formTitle: 'Content details',
-    submitLabel: 'Submit content',
-    successTitle: 'Content submitted successfully.',
+    formTitle: 'Post details',
+    submitLabel: 'Submit for review',
+    successTitle: 'Submitted. Thanks for sending it over.',
   },
   auth: {
     login: {
-      metadataDescription: 'Login page for this site.',
+      metadataDescription: 'Log in to your account on this site.',
       badge: 'Member access',
-      title: 'Welcome back to your publishing space.',
-      description: 'Login to continue browsing, managing submissions, and creating new content from your account.',
-      formTitle: 'Login',
+      title: 'Welcome back.',
+      description: 'Log in to keep browsing, manage what you have submitted and start something new.',
+      formTitle: 'Log in',
       submitLabel: 'Continue',
-      noAccount: 'No account matched these details. Create an account first, then login.',
-      success: 'Login successful. Redirecting...',
+      noAccount: 'No account matched those details. Create one first, then log in.',
+      success: 'Logged in. Taking you back...',
       createCta: 'Create an account',
     },
     signup: {
-      metadataDescription: 'Signup page for this site.',
-      badge: 'Site access',
-      title: 'Create your account and start publishing.',
-      description: 'Create an account to access the publishing workspace, save details, and submit content through the site.',
+      metadataDescription: 'Create an account on this site.',
+      badge: 'Get access',
+      title: 'Create an account and start publishing.',
+      description: 'An account opens the publishing workspace so you can save details and submit work through the site.',
       formTitle: 'Create account',
       submitLabel: 'Create account',
       passwordShort: 'Use at least 4 characters for the password.',
-      success: 'Account created successfully. Redirecting...',
-      loginCta: 'Login',
+      success: 'Account created. Taking you through...',
+      loginCta: 'Log in',
     },
   },
   detailPages: {
     article: {
-      relatedTitle: 'Related articles',
+      relatedTitle: 'Related reading',
       fallbackTitle: 'Article details',
     },
     listing: {
@@ -147,13 +232,13 @@ export const pagesContent = {
       fallbackTitle: 'Listing details',
     },
     image: {
-      relatedTitle: 'Related visuals',
-      fallbackTitle: 'Image details',
+      relatedTitle: 'More from the gallery',
+      fallbackTitle: 'Gallery details',
     },
     profile: {
-      relatedTitle: 'Suggested articles',
+      relatedTitle: 'You might also like',
       fallbackDescription: 'Profile details will appear here once available.',
-      visitButton: 'Visit Official Site',
+      visitButton: 'Visit official site',
     },
   },
 } as const

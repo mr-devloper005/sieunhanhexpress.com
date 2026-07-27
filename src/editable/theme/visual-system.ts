@@ -1,6 +1,7 @@
 import { slot4BrandConfig } from './brand.config'
 
 export type Slot4VisualPreset =
+  | 'studio-bloom'
   | 'editorial-paper'
   | 'luxury-atelier'
   | 'brutalist-index'
@@ -10,6 +11,20 @@ export type Slot4VisualPreset =
   | 'visual-gallery'
 
 export const visualPresets = {
+  'studio-bloom': {
+    label: 'Studio Bloom',
+    mood: 'premium, warm, quietly confident',
+    fontDirection: 'high-contrast serif display over a warm geometric sans',
+    colors: {
+      background: '#fdf7f4',
+      foreground: '#181211',
+      muted: '#6b5a53',
+      primary: '#181211',
+      accent: '#f4553d',
+      surface: '#ffffff',
+    },
+    shape: 'soft 26px cards, pill controls, halftone colour fields',
+  },
   'editorial-paper': {
     label: 'Editorial Paper',
     mood: 'calm magazine authority',
@@ -112,36 +127,36 @@ export const visualPresets = {
 
 export const visualSystem = {
   productKind: slot4BrandConfig.productKind,
-  recommendedPreset: 'tech-directory',
+  recommendedPreset: 'studio-bloom',
   radius: {
-    sm: '0.75rem',
-    md: '1.25rem',
-    lg: '2rem',
-    xl: '2.75rem',
+    sm: '0.9rem',
+    md: '1.4rem',
+    lg: '1.65rem',
+    xl: '2.25rem',
   },
   motion: {
     pageLoad: 'animate-in fade-in slide-in-from-bottom-4 duration-700',
-    cardHover: 'transition duration-500 hover:-translate-y-1.5 hover:shadow-2xl',
-    softHover: 'transition duration-300 hover:opacity-85',
+    cardHover: 'transition duration-500 hover:-translate-y-1.5',
+    softHover: 'transition duration-500 hover:opacity-70',
     reduceMotionSafe: 'motion-reduce:transform-none motion-reduce:transition-none',
   },
   typography: {
-    eyebrow: 'text-xs font-semibold uppercase tracking-[0.24em]',
-    heroTitle: 'text-5xl font-semibold tracking-[-0.06em] sm:text-6xl lg:text-7xl',
-    sectionTitle: 'text-3xl font-semibold tracking-[-0.04em] sm:text-4xl',
-    body: 'text-base leading-8',
-    caption: 'text-xs font-medium uppercase tracking-[0.18em]',
+    eyebrow: 'editable-label',
+    heroTitle: 'editable-display text-5xl leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-[4.4rem]',
+    sectionTitle: 'editable-display text-3xl leading-[1.05] tracking-[-0.015em] sm:text-5xl',
+    body: 'text-base leading-[1.75]',
+    caption: 'text-xs font-medium uppercase tracking-[0.2em]',
   },
   surfaces: {
-    glass: 'border border-white/15 bg-white/10 backdrop-blur-xl',
-    paper: 'border border-black/10 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)]',
-    quiet: 'border border-black/10 bg-black/[0.03]',
-    dark: 'border border-white/10 bg-black/30 shadow-[0_24px_70px_rgba(0,0,0,0.25)]',
+    glass: 'border border-white/25 bg-white/12 backdrop-blur-md',
+    paper: 'rounded-[26px] border border-[#eadcd4] bg-white',
+    quiet: 'rounded-[26px] border border-[#eadcd4] bg-[#f6e9e3]',
+    dark: 'rounded-[26px] bg-[#181211] text-[#fbf3ef]',
   },
   layout: {
-    page: 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8',
-    sectionY: 'py-12 sm:py-16 lg:py-20',
-    cardGrid: 'grid gap-5 sm:grid-cols-2 lg:grid-cols-3',
+    page: 'mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10',
+    sectionY: 'py-16 sm:py-20 lg:py-24',
+    cardGrid: 'grid gap-7 sm:grid-cols-2 lg:grid-cols-3',
   },
 } as const
 
