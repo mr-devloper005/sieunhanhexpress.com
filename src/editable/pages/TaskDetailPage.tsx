@@ -120,14 +120,6 @@ const leadText = (post: SitePost) => {
 
 const categoryOf = (post: SitePost, fallback: string) => asText(getContent(post).category) || post.tags?.[0] || fallback
 
-const dateOf = (post: SitePost) => {
-  const raw = post.publishedAt || post.createdAt
-  if (!raw) return ''
-  const date = new Date(raw)
-  if (Number.isNaN(date.getTime())) return ''
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-}
-
 const mapSrcFor = (post: SitePost) => {
   const address = getField(post, ['address', 'location', 'city'])
   const lat = getField(post, ['lat', 'latitude'])
@@ -197,18 +189,11 @@ function TopBar({ task }: { task: TaskKey }) {
 
 function MetaLine({ post, fallback, center = false }: { post: SitePost; fallback: string; center?: boolean }) {
   const category = categoryOf(post, fallback)
-  const date = dateOf(post)
   const author = asText(post.authorName) || SITE_CONFIG.name
   return (
     <div className={`mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.82rem] text-[var(--tk-muted)] ${center ? 'justify-center' : ''}`}>
       <span className="rounded-full bg-[var(--tk-accent-soft)] px-3.5 py-1.5 font-semibold text-[var(--tk-accent)]">{category}</span>
       <span className="font-medium text-[var(--tk-text)]">{author}</span>
-      {date ? (
-        <>
-          <span className="h-1 w-1 rounded-full bg-[var(--tk-line)]" />
-          <span>{date}</span>
-        </>
-      ) : null}
     </div>
   )
 }
